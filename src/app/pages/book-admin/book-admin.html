@@ -1,0 +1,34 @@
+<h2>Gestione libri</h2>
+
+@if (error()) {
+  <p class="error">{{ error() }}</p>
+}
+
+<form (ngSubmit)="save()">
+  <input name="title" [(ngModel)]="form.title" placeholder="Titolo" required />
+  <input name="author" [(ngModel)]="form.author" placeholder="Autore" required />
+  <input name="isbn" [(ngModel)]="form.isbn" placeholder="ISBN" required />
+  <input name="price" type="number" step="0.01" [(ngModel)]="form.price" placeholder="Prezzo" required />
+  <input name="copies" type="number" [(ngModel)]="form.availableCopies" placeholder="Copie" required />
+  <button type="submit">{{ editingUuid ? 'Aggiorna' : 'Aggiungi' }}</button>
+  @if (editingUuid) {
+    <button type="button" (click)="reset()">Annulla</button>
+  }
+</form>
+
+<table>
+  <tr><th>Titolo</th><th>Autore</th><th>ISBN</th><th>Prezzo</th><th>Copie</th><th></th></tr>
+  @for (b of books(); track b.uuid) {
+    <tr>
+      <td>{{ b.title }}</td>
+      <td>{{ b.author }}</td>
+      <td>{{ b.isbn }}</td>
+      <td>{{ b.price }}</td>
+      <td>{{ b.availableCopies }}</td>
+      <td>
+        <button (click)="edit(b)">Modifica</button>
+        <button (click)="remove(b)">Elimina</button>
+      </td>
+    </tr>
+  }
+</table>

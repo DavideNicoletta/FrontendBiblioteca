@@ -1,0 +1,14 @@
+<nav>
+  <a routerLink="/books">Catalogo</a>
+  @if (auth.isLoggedIn()) {
+    @if (auth.isAdmin()) {
+    <a routerLink="/admin/books">Gestione libri</a>
+  }
+    <a routerLink="/borrows">Prestiti</a>
+    <button (click)="auth.logout()">Esci</button>
+  } @else {
+    <a routerLink="/login">Accedi</a>
+    <a routerLink="/register">Registrati</a>
+  }
+</nav>
+<router-outlet />

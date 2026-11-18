@@ -1,0 +1,2 @@
+form { display: flex; flex-direction: column; gap: .5rem; max-width: 300px; }
+.error { color: crimson; }

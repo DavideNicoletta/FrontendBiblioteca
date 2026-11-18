@@ -1,0 +1,4 @@
+form { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #ccc; padding: .4rem .6rem; text-align: left; }
+.error { color: crimson; }

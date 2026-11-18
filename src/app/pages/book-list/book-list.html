@@ -1,0 +1,26 @@
+<h2>Catalogo</h2>
+
+@if (error()) {
+  <p class="error">{{ error() }}</p>
+}
+
+@if (message()) {
+  <p>{{ message() }}</p>
+}
+
+<div class="grid">
+  @for (book of books(); track book.uuid) {
+    <div class="card">
+      <h3>{{ book.title }}</h3>
+      <p>{{ book.author }}</p>
+      <p>ISBN: {{ book.isbn }}</p>
+      <p>{{ book.price | currency: 'EUR' }}</p>
+      <p>Copie disponibili: {{ book.availableCopies }}</p>
+      @if (auth.isLoggedIn()) {
+        <button (click)="borrow(book)" [disabled]="book.availableCopies === 0">
+          Prendi in prestito
+        </button>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,29 @@
+<h2>Prestiti</h2>
+
+@if (error()) {
+  <p class="error">{{ error() }}</p>
+}
+
+@if (borrows().length === 0) {
+  <p>Nessun prestito.</p>
+}
+
+<table>
+  <tr>
+    <th>Libro</th><th>Utente</th><th>Dal</th><th>Restituito</th><th>Stato</th><th></th>
+  </tr>
+  @for (b of borrows(); track b.uuid) {
+    <tr>
+      <td>{{ b.bookTitle }}</td>
+      <td>{{ b.username }}</td>
+      <td>{{ b.borrowDate }}</td>
+      <td>{{ b.returnDate ?? '-' }}</td>
+      <td>{{ b.status === 'Active' ? 'In corso' : 'Restituito' }}</td>
+      <td>
+        @if (b.status === 'Active') {
+          <button (click)="giveBack(b)">Restituisci</button>
+        }
+      </td>
+    </tr>
+  }
+</table>
