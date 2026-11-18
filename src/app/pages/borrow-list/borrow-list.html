@@ -21,7 +21,7 @@
       <td>{{ b.status === 'Active' ? 'In corso' : 'Restituito' }}</td>
       <td>
         @if (b.status === 'Active') {
-          <button (click)="giveBack(b)">Restituisci</button>
+          <button (click)="giveBack(b)"  class="btn btn-primary btn-sm">Restituisci</button>
         }
       </td>
     </tr>

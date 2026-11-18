@@ -1,14 +1,17 @@
-<nav>
-  <a routerLink="/books">Catalogo</a>
-  @if (auth.isLoggedIn()) {
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="justify-content: flex-end;align-items: center;       /* Centra verticalmente */
+  padding: 1rem 2rem;">
+  <a class="navbar-brand" routerLink="/books">Catalogo</a>
+    @if (auth.isLoggedIn()) {
     @if (auth.isAdmin()) {
-    <a routerLink="/admin/books">Gestione libri</a>
+    <a class="navbar-brand" routerLink="/admin/books">Gestione libri</a>
   }
-    <a routerLink="/borrows">Prestiti</a>
-    <button (click)="auth.logout()">Esci</button>
+    <a class="navbar-brand" routerLink="/borrows">Prestiti</a>
+    <button (click)="auth.logout()" class="btn btn-primary" >Esci</button>
   } @else {
-    <a routerLink="/login">Accedi</a>
-    <a routerLink="/register">Registrati</a>
+    <a class="navbar-brand" routerLink="/login">Accedi</a>
+    <a class="navbar-brand" routerLink="/register">Registrati</a>
   }
 </nav>
+<div style="padding: 10px;">
 <router-outlet />
+</div>
